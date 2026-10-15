@@ -1,0 +1,24 @@
+{
+  "name": "Anto Nutrición",
+  "short_name": "Anto Nutrición",
+  "description": "Plan de comidas saludable, bebidas sin azúcar para dejar la gaseosa, control diario y análisis de fotos de tu plato.",
+  "lang": "es",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#EEF6F5",
+  "theme_color": "#0E7C78",
+  "categories": ["health", "food", "lifestyle"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Hoy", "url": "./#hoy", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Bebidas", "url": "./#bebidas", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Foto IA", "url": "./#foto", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
