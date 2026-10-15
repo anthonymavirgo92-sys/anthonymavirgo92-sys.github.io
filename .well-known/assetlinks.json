@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.anthonymavirgo92_sys.twa",
+        "sha256_cert_fingerprints": ["19:71:AD:AF:A8:23:3A:42:A7:49:1C:BA:B5:22:A0:34:26:B3:0B:E2:B4:32:18:7E:EE:93:B1:4D:D8:9D:03:B0"]
+      }
+    }]
