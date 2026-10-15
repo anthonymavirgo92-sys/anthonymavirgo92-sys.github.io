@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Anto Nutrición</title>
 <meta name="description" content="Plan de alimentación saludable para resistencia a la insulina y obesidad: láminas por día, control diario, bebidas sin azúcar y análisis de fotos.">
-<meta name="theme-color" content="#0E7C78">
+<meta name="theme-color" content="#06131A">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -14,185 +14,233 @@
 <meta name="apple-mobile-web-app-title" content="Anto Nutrición">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
-/* Layout: app móvil de una columna (máx. 980px) con barra de pestañas fija abajo */
+/* Layout: app móvil oscura de una columna (máx. 980px), tarjetas de vidrio, barra flotante abajo.
+   Look: "bio-tech" — océano profundo con acentos aguamarina→cian, coral para energía, violeta para logros */
 :root{
-  --bg:#EEF6F5; --surface:#FFFFFF; --surface-2:#E2EFED; --ink:#11272A; --muted:#527175; --line:#CFE1DF;
-  --accent:#0E7C78; --accent-ink:#FFFFFF; --accent-soft:#D2EEEB; --sun:#D9822B; --sun-soft:#FCEBDA;
-  --ok:#2E8B57; --warn:#B87A0C; --bad:#BF3F28; --bad-soft:#F8DED7; --warn-soft:#FBEFD2; --ok-soft:#DDF1E4;
-  --water:#3E95CF; --water-soft:#DCEEF9;
-  --z-v:#CDE7C6; --z-p:#F5D3C3; --z-c:#F1E3B6; --z-g:#DCE7B0; --z-f:#EBD5EF; --plate:#FFFFFF; --rim:#D6E5E3;
-  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --f-body:"Figtree","Segoe UI",system-ui,-apple-system,sans-serif;
-  --r:16px; --nav-h:66px;
-  color-scheme:light;
+  --bg:#06131A; --bg-2:#0A1E27; --surface:rgba(16,40,50,.72); --surface-solid:#0F2630; --surface-2:rgba(255,255,255,.06);
+  --ink:#E9F7F6; --muted:#8DB0B4; --line:rgba(140,230,222,.14); --line-strong:rgba(140,230,222,.28);
+  --accent:#22D3C5; --accent-2:#3BA8FF; --accent-ink:#03201D; --accent-soft:rgba(34,211,197,.14);
+  --grad:linear-gradient(135deg,#22D3C5 0%,#3BA8FF 100%);
+  --grad-warm:linear-gradient(135deg,#FFB454 0%,#FF6F7D 100%);
+  --grad-violet:linear-gradient(135deg,#9B8CFF 0%,#3BA8FF 100%);
+  --sun:#FFB454; --sun-soft:rgba(255,180,84,.13); --coral:#FF7A6B; --violet:#A497FF; --violet-soft:rgba(164,151,255,.14);
+  --ok:#3DDC97; --ok-soft:rgba(61,220,151,.14); --warn:#FFC857; --warn-soft:rgba(255,200,87,.14); --bad:#FF6B6B; --bad-soft:rgba(255,107,107,.15);
+  --water:#4CC9FF; --water-soft:rgba(76,201,255,.14);
+  --z-v:#1E5A44; --z-p:#6E3C33; --z-c:#6B5827; --z-g:#4B5C25; --z-f:#5B3A6E; --plate:#0E2630; --rim:#1F4552;
+  --glow:0 0 0 1px rgba(34,211,197,.35),0 8px 30px rgba(34,211,197,.18);
+  --f-display:"Sora","Segoe UI",system-ui,sans-serif;
+  --f-body:"Manrope","Segoe UI",system-ui,-apple-system,sans-serif;
+  --r:20px; --nav-h:68px;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root{
-  --bg:#0B1719; --surface:#132427; --surface-2:#1A2F32; --ink:#E2F0EF; --muted:#92B0B1; --line:#25403F;
-  --accent:#4FC4BC; --accent-ink:#04201E; --accent-soft:#163B39; --sun:#F0A35A; --sun-soft:#3D2A17;
-  --ok:#62C48C; --warn:#E3A93E; --bad:#EE7A62; --bad-soft:#3E211B; --warn-soft:#3A2E14; --ok-soft:#1B3A2A;
-  --water:#6CB8EA; --water-soft:#16303F;
-  --z-v:#27462C; --z-p:#553226; --z-c:#524625; --z-g:#3D4A22; --z-f:#462F4C; --plate:#1B2C2F; --rim:#2C4446;
-  color-scheme:dark}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 calc(var(--nav-h) + 28px + env(safe-area-inset-bottom,0px));overscroll-behavior-y:contain}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 calc(var(--nav-h) + 40px + env(safe-area-inset-bottom,0px));overscroll-behavior-y:contain;position:relative;min-height:100vh}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 35% at 15% 10%,rgba(34,211,197,.20),transparent 70%),radial-gradient(35% 30% at 90% 25%,rgba(59,168,255,.16),transparent 70%),radial-gradient(40% 35% at 60% 95%,rgba(164,151,255,.14),transparent 70%);
+  animation:drift 24s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(4%,-3%,0) rotate(6deg)}}
 img{max-width:100%}
 [hidden]{display:none!important}
 .wrap{max-width:980px;margin:0 auto}
-h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
-h1{font-size:1.7rem;font-weight:800;letter-spacing:-.01em}
-h2{font-size:1.3rem;font-weight:800}
-h3{font-size:1.05rem;font-weight:600}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:1.75rem;font-weight:800}
+h2{font-size:1.28rem;font-weight:700}
+h3{font-size:1.03rem;font-weight:600}
 p{margin:0}
-a{color:var(--accent);font-weight:600}
+a{color:var(--accent);font-weight:700}
 button{font:inherit;color:inherit;cursor:pointer}
-input,textarea,select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
-textarea{min-height:76px;resize:vertical}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input,textarea,select{font:inherit;color:var(--ink);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:11px 13px;width:100%;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+input::placeholder,textarea::placeholder{color:#6F9196}
+textarea{min-height:80px;resize:vertical}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .num{font-variant-numeric:tabular-nums}
 .muted{color:var(--muted)}
 .small{font-size:.84rem}
-.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.eyebrow{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stack{display:flex;flex-direction:column;gap:14px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
-.btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 16px;font-weight:600;transition:transform .12s}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:0 12px 32px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04)}
+.btn{border:1px solid var(--line-strong);background:rgba(255,255,255,.05);border-radius:999px;padding:10px 18px;font-weight:700;transition:transform .12s,box-shadow .2s}
 .btn:active{transform:scale(.96)}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn.sm{padding:4px 12px;font-size:.82rem}
-.btn:disabled{opacity:.5;cursor:default}
-.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:.78rem;font-weight:600;background:var(--surface-2);color:var(--muted)}
-.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.bad{background:var(--bad-soft);color:var(--bad)} .pill.water{background:var(--water-soft);color:var(--water)}
+.btn.primary{background:var(--grad);color:var(--accent-ink);border-color:transparent;box-shadow:0 6px 22px rgba(34,211,197,.3)}
+.btn.sm{padding:5px 13px;font-size:.82rem}
+.btn:disabled{opacity:.45;cursor:default;box-shadow:none}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:.76rem;font-weight:700;background:var(--surface-2);color:var(--muted)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.bad{background:var(--bad-soft);color:var(--bad)} .pill.water{background:var(--water-soft);color:var(--water)} .pill.violet{background:var(--violet-soft);color:var(--violet)}
 
 /* Encabezado */
-.top{position:sticky;top:0;z-index:5;background:var(--bg);padding-top:calc(env(safe-area-inset-top,0px) + 10px);padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:16px;margin-inline:-16px;padding-inline:16px}
+.top{position:sticky;top:0;z-index:5;background:rgba(6,19,26,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-top:calc(env(safe-area-inset-top,0px) + 10px);padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:18px;margin-inline:-16px;padding-inline:16px}
 .top .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
-.brand img{width:36px;height:36px;border-radius:10px;flex:none}
-.brand b{font-family:var(--f-display);font-size:1.2rem;font-weight:800}
-.iconbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);font-size:1.1rem;display:grid;place-items:center;flex:none}
+.brand img{width:38px;height:38px;border-radius:12px;flex:none;box-shadow:0 0 18px rgba(34,211,197,.35)}
+.brand b{font-family:var(--f-display);font-size:1.15rem;font-weight:800}
+.brand .lvl{display:block;font-size:.7rem;font-weight:700;color:var(--muted)}
+.iconbtn{width:42px;height:42px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.05);font-size:1.1rem;display:grid;place-items:center;flex:none;transition:transform .12s}
+.iconbtn:active{transform:scale(.92)}
 
-/* Pestañas */
-nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav.tabs .wrap{display:grid;grid-template-columns:repeat(6,1fr);height:var(--nav-h)}
-nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.68rem;font-weight:700;color:var(--muted);position:relative}
-nav.tabs button .ic{font-size:1.3rem;line-height:1;transition:transform .2s}
-nav.tabs button[aria-current="page"]{color:var(--accent)}
-nav.tabs button[aria-current="page"] .ic{transform:translateY(-2px) scale(1.12)}
-nav.tabs button[aria-current="page"]::before{content:"";position:absolute;top:0;left:25%;right:25%;height:3px;border-radius:0 0 3px 3px;background:var(--accent)}
-section.view{animation:rise .28s ease-out}
-@keyframes rise{from{opacity:.4;transform:translateY(8px)}to{opacity:1;transform:none}}
-@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
+/* Barra flotante */
+nav.tabs{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:10;background:rgba(10,30,39,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line-strong);border-radius:24px;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+nav.tabs .wrap{display:grid;grid-template-columns:repeat(6,1fr);height:var(--nav-h);max-width:720px}
+nav.tabs button{background:none;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:.66rem;font-weight:700;color:var(--muted);position:relative}
+nav.tabs button .ic{font-size:1.28rem;line-height:1;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+nav.tabs button[aria-current="page"]{color:var(--ink)}
+nav.tabs button[aria-current="page"] .ic{transform:translateY(-3px) scale(1.15);filter:drop-shadow(0 0 8px rgba(34,211,197,.7))}
+nav.tabs button[aria-current="page"]::after{content:"";position:absolute;bottom:7px;width:18px;height:3px;border-radius:3px;background:var(--grad);box-shadow:0 0 10px rgba(34,211,197,.8)}
+section.view{animation:rise .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.2)}100%{transform:scale(1)}}
 .pop{animation:pop .3s}
 
+/* Intro */
+#splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;place-items:center;transition:opacity .45s}
+#splash.out{opacity:0;pointer-events:none}
+#splash img{width:96px;height:96px;border-radius:26px;animation:breathe 1.1s ease-in-out infinite;box-shadow:0 0 50px rgba(34,211,197,.45)}
+#splash b{display:block;text-align:center;margin-top:16px;font-family:var(--f-display);font-size:1.3rem}
+@keyframes breathe{50%{transform:scale(1.06)}}
+
 /* Hoy */
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:18px;border:1px solid var(--line-strong);background:linear-gradient(160deg,rgba(34,211,197,.16),rgba(59,168,255,.08) 45%,rgba(16,40,50,.8));box-shadow:0 18px 50px rgba(0,0,0,.35)}
 .daybar{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .daybar .mid{text-align:center;min-width:0}
-.daybar .mid h1{text-transform:capitalize}
-.summary{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
-.ring{width:96px;height:96px}
-.ring .arc{transition:stroke-dashoffset .6s ease}
-.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}
-.stats div{min-width:0}
-.stats b{font-family:var(--f-display);font-size:1.15rem;display:block}
-.meal{display:grid;gap:10px}
+.daybar .mid h1{font-size:1.35rem}
+.daybar .mid h1::first-letter{text-transform:uppercase}
+.rings-row{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;margin-top:12px}
+.rings{width:150px;height:150px}
+.rings .arc{transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1)}
+.legend3{display:flex;flex-direction:column;gap:10px;min-width:0}
+.legend3 div{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center}
+.legend3 i{width:12px;height:12px;border-radius:50%}
+.legend3 b{font-family:var(--f-display);font-size:1rem}
+.xpbar{display:flex;flex-direction:column;gap:6px;margin-top:14px;padding:12px;border-radius:16px;background:rgba(0,0,0,.22);border:1px solid var(--line)}
+.xpbar .track{height:9px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.xpbar .track i{display:block;height:100%;border-radius:99px;background:var(--grad-violet);box-shadow:0 0 12px rgba(164,151,255,.7);transition:width 1s}
+.chipline{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.nextmeal{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--sun-soft);border:1px solid rgba(255,180,84,.3)}
+.nextmeal .big{font-size:1.8rem}
+.timeline{position:relative;display:flex;flex-direction:column;gap:12px;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:7px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--accent),rgba(59,168,255,.2))}
+.meal{display:grid;gap:10px;position:relative}
+.meal::before{content:"";position:absolute;left:-21px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--line-strong)}
+.meal[data-st="si"]::before{background:var(--ok);border-color:var(--ok);box-shadow:0 0 10px var(--ok)}
+.meal[data-st="parcial"]::before,.meal[data-st="cambio"]::before{background:var(--warn);border-color:var(--warn)}
+.meal[data-st="no"]::before{background:var(--bad);border-color:var(--bad)}
+.meal.next{border-color:rgba(255,180,84,.55);box-shadow:0 0 0 1px rgba(255,180,84,.25),0 12px 32px rgba(0,0,0,.3)}
 .meal-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.seg button{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 4px;font-size:.8rem;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .15s,transform .12s}
-.seg button:active{transform:scale(.95)}
+.seg button{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:14px;padding:9px 4px;font-size:.78rem;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .15s,transform .12s,box-shadow .2s;color:var(--muted)}
+.seg button:active{transform:scale(.94)}
 .seg button .s{font-size:1.05rem}
-.seg button[aria-pressed="true"][data-v="si"]{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.seg button[aria-pressed="true"][data-v="si"]{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);box-shadow:0 0 14px rgba(61,220,151,.25)}
 .seg button[aria-pressed="true"][data-v="parcial"],.seg button[aria-pressed="true"][data-v="cambio"]{background:var(--warn-soft);border-color:var(--warn);color:var(--warn)}
 .seg button[aria-pressed="true"][data-v="no"]{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chips.scroll{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 13px;font-size:.84rem;font-weight:600;transition:background .15s}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip{flex:none;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 14px;font-size:.84rem;font-weight:700;transition:background .15s,box-shadow .2s;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--grad);border-color:transparent;color:var(--accent-ink);box-shadow:0 4px 16px rgba(34,211,197,.3)}
 .glasses{display:flex;gap:6px;flex-wrap:wrap}
 .glass{width:36px;height:46px;border:0;background:none;padding:0}
 .glass svg{width:100%;height:100%}
-.glass .w{fill:var(--surface-2);transition:fill .25s} .glass[aria-pressed="true"] .w{fill:var(--water)}
+.glass .w{fill:rgba(255,255,255,.06);transition:fill .25s} .glass[aria-pressed="true"] .w{fill:var(--water);filter:drop-shadow(0 0 6px rgba(76,201,255,.6))}
 .glass .o{fill:none;stroke:var(--muted);stroke-width:2}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-label.f{display:flex;flex-direction:column;gap:4px;font-size:.84rem;font-weight:600;color:var(--muted)}
+label.f{display:flex;flex-direction:column;gap:5px;font-size:.82rem;font-weight:700;color:var(--muted)}
 .photo-mini{display:flex;gap:8px;align-items:center;font-size:.8rem}
-.photo-mini img{width:38px;height:38px;object-fit:cover;border-radius:8px}
-.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--surface);width:100%;text-align:left}
-.switch .k{width:46px;height:28px;border-radius:99px;background:var(--surface-2);position:relative;flex:none;transition:background .2s}
-.switch .k::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px #0003;transition:left .2s}
-.switch[aria-pressed="true"] .k{background:var(--accent)}
-.switch[aria-pressed="true"] .k::after{left:21px}
-.welcome{background:var(--accent);color:var(--accent-ink);border:0}
-.welcome .btn{background:var(--accent-ink);color:var(--accent);border:0}
+.photo-mini img{width:38px;height:38px;object-fit:cover;border-radius:10px}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.04);width:100%;text-align:left}
+.switch .k{width:48px;height:28px;border-radius:99px;background:rgba(255,255,255,.12);position:relative;flex:none;transition:background .2s}
+.switch .k::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #0006;transition:left .25s cubic-bezier(.3,1.6,.5,1)}
+.switch[aria-pressed="true"] .k{background:var(--grad);box-shadow:0 0 12px rgba(34,211,197,.5)}
+.switch[aria-pressed="true"] .k::after{left:23px}
+.welcome{background:var(--grad);color:var(--accent-ink);border:0}
+.welcome .btn{background:var(--accent-ink);color:var(--accent);border:0;box-shadow:none}
+.tipcard{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border-radius:20px;padding:14px;border:1px solid rgba(76,201,255,.35);background:linear-gradient(135deg,rgba(76,201,255,.16),rgba(16,40,50,.7));color:var(--ink)}
 
 /* Láminas */
 .daypick{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-.daypick button{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:8px 12px;font-weight:700;font-size:.85rem}
-.daypick button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.daypick button{flex:none;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:14px;padding:9px 13px;font-weight:700;font-size:.85rem;color:var(--muted)}
+.daypick button[aria-pressed="true"]{background:var(--grad);color:var(--accent-ink);border-color:transparent;box-shadow:0 4px 16px rgba(34,211,197,.3)}
 .lamina-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
-.lamina-head h1{font-size:2.3rem}
+.lamina-head h1{font-size:2.4rem}
 .macros{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.macro{background:var(--surface-2);border-radius:12px;padding:8px 10px;min-width:0}
+.macro{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px;min-width:0}
 .macro b{font-family:var(--f-display);font-size:1.1rem;display:block}
-.macro span{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.macro span{font-size:.64rem;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.08em}
 .plate-row{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:18px;align-items:center}
-.plate-row svg{width:100%;height:auto;max-width:100%}
-.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.plate-row svg{width:100%;height:auto;max-width:100%;filter:drop-shadow(0 10px 24px rgba(0,0,0,.4))}
+.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
 .items li{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:baseline}
 .items li .e{font-size:1.15rem}
-.items li .k{font-size:.78rem;color:var(--muted)}
+.items li .k{font-size:.76rem;color:var(--muted)}
 .zone-dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px}
-.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
-.time{font-size:.78rem;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 10px}
-.note{background:var(--sun-soft);border-radius:12px;padding:10px 12px;font-size:.88rem}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:.76rem;color:var(--muted)}
+.time{font-size:.74rem;font-weight:800;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:3px 10px;letter-spacing:.02em}
+.note{background:var(--sun-soft);border:1px solid rgba(255,180,84,.25);border-radius:14px;padding:11px 13px;font-size:.88rem}
 .opts{display:flex;flex-direction:column;gap:4px;font-size:.88rem}
-.swipehint{font-size:.78rem;color:var(--muted);text-align:center}
+.swipehint{font-size:.76rem;color:var(--muted);text-align:center}
 svg .zv{fill:var(--z-v)} svg .zp{fill:var(--z-p)} svg .zc{fill:var(--z-c)} svg .zg{fill:var(--z-g)} svg .zf{fill:var(--z-f)}
 svg .plate{fill:var(--plate);stroke:var(--rim);stroke-width:6} svg .sep{stroke:var(--plate);stroke-width:3}
-svg .cup{fill:var(--surface-2);stroke:var(--rim);stroke-width:3}
+svg .cup{fill:var(--surface-solid);stroke:var(--rim);stroke-width:3}
 
 /* Bebidas */
-.hero-beb{background:linear-gradient(160deg,var(--water-soft),var(--surface));border:1px solid var(--line);border-radius:22px;padding:18px;display:grid;gap:14px}
-.streak{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.streak div{background:var(--surface);border-radius:14px;padding:10px;text-align:center}
+.hero-beb{position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(76,201,255,.2),rgba(34,211,197,.08) 50%,rgba(16,40,50,.85));border:1px solid rgba(76,201,255,.35);border-radius:26px;padding:18px;display:grid;gap:14px}
+.hero-beb::after{content:"";position:absolute;right:-30px;top:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(76,201,255,.35),transparent 70%)}
+.streak{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;position:relative;z-index:1}
+.streak div{background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:16px;padding:10px;text-align:center}
 .streak b{display:block;font-family:var(--f-display);font-size:1.8rem;line-height:1.1}
 .cubes{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
-.cube{width:18px;height:18px;border-radius:4px;background:var(--surface);border:2px solid var(--muted);animation:drop .4s backwards}
+.cube{width:18px;height:18px;border-radius:5px;background:rgba(255,255,255,.9);box-shadow:0 0 8px rgba(255,255,255,.4);animation:drop .4s backwards}
 @keyframes drop{from{transform:translateY(-14px);opacity:0}}
 .compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-.compare>div{background:var(--surface);border-radius:14px;padding:12px;display:grid;gap:8px}
-.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
-.bcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-.bcard .art{height:118px;display:grid;place-items:center;font-size:3.2rem;position:relative}
-.bcard .art .bub{position:absolute;bottom:-8px;width:8px;height:8px;border-radius:50%;background:#fff8;animation:bub 2.6s infinite ease-in}
-@keyframes bub{to{transform:translateY(-120px);opacity:0}}
-.bcard .body{padding:12px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.compare>div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:8px}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.bcard{background:var(--surface);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.bcard:active{transform:scale(.98)}
+.bcard .art{height:120px;display:grid;place-items:center;font-size:3.3rem;position:relative;overflow:hidden}
+.bcard .art span{filter:drop-shadow(0 8px 16px rgba(0,0,0,.45));animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-5px)}}
+.bcard .art .bub{position:absolute;bottom:-8px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);animation:bub 2.6s infinite ease-in}
+@keyframes bub{to{transform:translateY(-130px);opacity:0}}
+.bcard .body{padding:12px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
 .bcard .meta{display:flex;gap:6px;flex-wrap:wrap}
 .bcard .acts{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:6px}
-.fav{background:none;border:0;font-size:1.3rem;padding:4px}
+.fav{background:none;border:0;font-size:1.35rem;padding:4px;color:var(--sun)}
 .fav[aria-pressed="true"]{animation:pop .3s}
-.cat-gas{background:linear-gradient(180deg,#D5ECF8,#EEF8FD)} .cat-limon{background:linear-gradient(180deg,#F3F2BE,#FBFBE6)} .cat-fruta{background:linear-gradient(180deg,#F8D6DA,#FDEEEF)} .cat-te{background:linear-gradient(180deg,#D7EBCF,#EEF7EA)} .cat-caliente{background:linear-gradient(180deg,#F1DCC6,#FAF0E6)}
-@media (prefers-color-scheme: dark){.cat-gas{background:linear-gradient(180deg,#173445,#16221A)} .cat-limon{background:linear-gradient(180deg,#3A3A17,#16221A)} .cat-fruta{background:linear-gradient(180deg,#45222A,#16221A)} .cat-te{background:linear-gradient(180deg,#22401E,#16221A)} .cat-caliente{background:linear-gradient(180deg,#3F2C1A,#16221A)}}
-.recipe-sheet ol,.recipe-sheet ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.cat-gas{background:radial-gradient(circle at 50% 120%,rgba(76,201,255,.55),rgba(10,40,60,.9))}
+.cat-limon{background:radial-gradient(circle at 50% 120%,rgba(220,230,90,.5),rgba(30,45,20,.9))}
+.cat-fruta{background:radial-gradient(circle at 50% 120%,rgba(255,110,140,.5),rgba(50,20,35,.9))}
+.cat-te{background:radial-gradient(circle at 50% 120%,rgba(90,220,140,.45),rgba(15,45,30,.9))}
+.cat-cremosa{background:radial-gradient(circle at 50% 120%,rgba(200,170,255,.5),rgba(35,25,55,.9))}
+.cat-caliente{background:radial-gradient(circle at 50% 120%,rgba(255,160,90,.5),rgba(55,30,15,.9))}
+.recipe-sheet ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:st}
+.steps li button{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start;width:100%;text-align:left;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:14px;padding:10px 12px;color:var(--ink)}
+.steps li button .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:var(--accent-soft);color:var(--accent)}
+.steps li button[aria-pressed="true"]{border-color:var(--ok);background:var(--ok-soft)}
+.steps li button[aria-pressed="true"] .n{background:var(--ok);color:#03201D}
+.steps li button[aria-pressed="true"] .t{text-decoration:line-through;color:var(--muted)}
 .weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
-.weeks div{background:var(--surface-2);border-radius:14px;padding:12px}
+.weeks div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:12px}
 .weeks b{font-family:var(--f-display)}
 
 /* Foto */
-.drop{border:2px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;cursor:pointer}
-.drop img{max-height:280px;border-radius:12px;object-fit:cover}
-.bars{display:flex;flex-direction:column;gap:8px}
+.drop{border:2px dashed var(--line-strong);border-radius:var(--r);padding:24px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;cursor:pointer;background:rgba(34,211,197,.04)}
+.drop img{max-height:280px;border-radius:14px;object-fit:cover}
+.bars{display:flex;flex-direction:column;gap:9px}
 .bar{display:grid;grid-template-columns:110px 1fr 70px;gap:8px;align-items:center;font-size:.85rem}
-.bar .t{height:10px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.bar .t{height:10px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden}
 .bar .t i{display:block;height:100%;border-radius:99px;transition:width .8s ease}
 .hist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
 .hcard{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:start}
-.hcard img{width:72px;height:72px;object-fit:cover;border-radius:10px}
+.hcard img{width:72px;height:72px;object-fit:cover;border-radius:12px}
 .sem{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle}
-.sem.verde{background:var(--ok)} .sem.amarillo{background:var(--warn)} .sem.rojo{background:var(--bad)}
-.spinner{width:22px;height:22px;border:3px solid var(--surface-2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;display:inline-block;vertical-align:middle}
+.sem.verde{background:var(--ok);box-shadow:0 0 8px var(--ok)} .sem.amarillo{background:var(--warn);box-shadow:0 0 8px var(--warn)} .sem.rojo{background:var(--bad);box-shadow:0 0 8px var(--bad)}
+.spinner{width:22px;height:22px;border:3px solid rgba(255,255,255,.12);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;display:inline-block;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* Aprende */
@@ -202,49 +250,69 @@ svg .cup{fill:var(--surface-2);stroke:var(--rim);stroke-width:3}
 .tri{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .tri ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .hand{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.hand div{background:var(--surface-2);border-radius:12px;padding:10px}
+.hand div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:10px}
 .hand b{display:block;font-family:var(--f-display);font-size:1.6rem}
-.answer{white-space:pre-wrap;background:var(--surface-2);border-radius:12px;padding:12px;font-size:.92rem}
+.answer{white-space:pre-wrap;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:12px;font-size:.92rem}
 details.recipe{border-top:1px solid var(--line);padding-block:10px}
 details.recipe summary{font-weight:700;cursor:pointer}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.kpis div{background:var(--surface-2);border-radius:12px;padding:12px}
+.kpis div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px}
 .kpis b{display:block;font-family:var(--f-display);font-size:1.5rem}
 
 /* Avance */
+.goal{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.goal .track{height:14px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;position:relative}
+.goal .track i{display:block;height:100%;border-radius:99px;background:var(--grad);box-shadow:0 0 14px rgba(34,211,197,.6);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.heat{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.heat .h{aspect-ratio:1;border-radius:7px;background:rgba(255,255,255,.05);position:relative;max-width:100%}
+.heat .h.today{outline:2px solid var(--sun);outline-offset:1px}
+.heat .dn{font-size:.66rem;color:var(--muted);text-align:center;font-weight:700}
+.wbars{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;align-items:end;height:130px}
+.wbars div{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end;min-width:0}
+.wbars i{width:100%;max-width:30px;border-radius:9px 9px 4px 4px;background:var(--grad);box-shadow:0 0 12px rgba(34,211,197,.35);min-height:4px;transition:height .9s}
+.wbars span{font-size:.68rem;color:var(--muted);font-weight:700}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.badge{border-radius:18px;padding:12px;text-align:center;border:1px solid var(--line);background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:4px;align-items:center}
+.badge .bi{font-size:2rem;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.05);filter:grayscale(1);opacity:.45}
+.badge.on{border-color:rgba(164,151,255,.45);background:linear-gradient(160deg,rgba(164,151,255,.16),rgba(16,40,50,.6))}
+.badge.on .bi{filter:none;opacity:1;background:var(--violet-soft);box-shadow:0 0 20px rgba(164,151,255,.45)}
+.badge b{font-size:.82rem} .badge span{font-size:.7rem;color:var(--muted)}
 .tablewrap{overflow-x:auto}
 table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:640px}
-th,td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
-th{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+th,td{padding:8px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+th{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
 td:first-child,th:first-child{text-align:left}
 .chart svg{width:100%;height:auto}
-.chart .ax{stroke:var(--line)} .chart .ln{stroke:var(--accent);fill:none;stroke-width:2.5} .chart .ar{fill:var(--accent-soft)} .chart .pt{fill:var(--accent)} .chart text{fill:var(--muted);font:500 11px var(--f-body)}
+.chart .ax{stroke:var(--line)} .chart .ln{stroke:url(#lg);fill:none;stroke-width:3} .chart .pt{fill:var(--accent)} .chart text{fill:var(--muted);font:600 11px var(--f-body)}
 
-/* Hojas (dialog) */
-dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:640px;max-height:92vh;border-radius:22px 22px 0 0;background:var(--surface);color:var(--ink)}
-dialog.sheet::backdrop{background:#0008}
-dialog.sheet[open]{animation:up .25s ease-out}
-@keyframes up{from{transform:translateY(40px);opacity:.6}}
+/* Hojas */
+dialog.sheet{border:1px solid var(--line-strong);border-bottom:0;padding:0;margin:auto auto 0;width:100%;max-width:640px;max-height:92vh;border-radius:26px 26px 0 0;background:var(--surface-solid);color:var(--ink);box-shadow:0 -20px 60px rgba(0,0,0,.5)}
+dialog.sheet::backdrop{background:rgba(2,8,12,.7);backdrop-filter:blur(4px)}
+dialog.sheet[open]{animation:up .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(60px);opacity:.5}}
 .sheet-in{padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px;overflow-y:auto;max-height:92vh}
 .sheet-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:600;font-size:.88rem;z-index:30;animation:rise .2s}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 26px + env(safe-area-inset-bottom,0px));background:var(--grad);color:var(--accent-ink);padding:10px 18px;border-radius:999px;font-weight:800;font-size:.88rem;z-index:30;animation:rise .25s;box-shadow:0 8px 26px rgba(34,211,197,.4)}
 canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:40}
 
 @media (max-width:640px){
-  h1{font-size:1.45rem}
-  .lamina-head h1{font-size:1.9rem}
+  h1{font-size:1.5rem}
+  .lamina-head h1{font-size:1.95rem}
   .plate-row{grid-template-columns:1fr}
   .plate-row svg{max-width:300px;margin:0 auto;display:block}
   .macros{grid-template-columns:repeat(3,minmax(0,1fr))}
   .bar{grid-template-columns:92px 1fr 62px}
+  .rings-row{grid-template-columns:128px 1fr}
+  .rings{width:128px;height:128px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<div id="splash"><div><img src="icons/icon-512.png" alt=""><b class="grad-text">Anto Nutrición</b></div></div>
 <header class="top">
   <div class="wrap">
-    <div class="brand"><img src="icons/icon-192.png" alt=""><b>Anto Nutrición</b></div>
+    <div class="brand"><img src="icons/icon-192.png" alt=""><div><b>Anto Nutrición</b><span class="lvl" id="hdr-lvl">🌱 Nivel 1</span></div></div>
     <div class="row" style="gap:8px;flex-wrap:nowrap">
       <button class="btn sm primary" id="install" hidden>Instalar</button>
       <button class="iconbtn" id="share" aria-label="Compartir la app">📤</button>
@@ -363,7 +431,7 @@ const PROHIBIDOS = ['Miel de abeja, dulces, pasteles','Gaseosas, jugos y extract
    BEBIDAS SIN AZÚCAR — recetas
    tag: libre | medida
    ============================================================ */
-const BCATS = {gas:'Con burbujas', limon:'Limonadas', fruta:'Aguas de fruta', te:'Tés y refrescos', caliente:'Calientes'};
+const BCATS = {gas:'Con burbujas', limon:'Limonadas', fruta:'Aguas de fruta', te:'Tés y refrescos', cremosa:'Cremosas', caliente:'Calientes'};
 const BEB = [
   {id:'soda-limon', cat:'gas', e:'🍋', n:'Soda de limón con hierbabuena', t:'2 min', rinde:'1 vaso grande', tag:'libre',
    ing:['300 ml de agua con gas bien helada','Jugo de ½ limón','Mucho hielo','4 hojas de hierbabuena','Opcional: 2 gotas de stevia'],
@@ -456,8 +524,83 @@ const BEB = [
   {id:'cafe-frio', cat:'caliente', e:'☕', n:'Café frío con canela', t:'5 min', rinde:'1 vaso', tag:'medida',
    ing:['1 taza de café pasado, ya frío','Hielo','Pizca de canela','Opcional: un chorrito de leche descremada'],
    pasos:['Llena un vaso con hielo.','Vierte el café frío y espolvorea canela.','Agrega leche descremada si quieres.'],
-   tip:'Cuenta como tu única taza de café del día (la del desayuno).'}
+   tip:'Cuenta como tu única taza de café del día (la del desayuno).'},
+  {id:'mojito', cat:'gas', e:'🌿', n:'Mojito sin alcohol', t:'4 min', rinde:'1 vaso grande', tag:'libre',
+   ing:['½ limón en cuartos','10 hojas de hierbabuena','Hielo picado','300 ml de agua con gas','2 gotas de stevia (opcional)'],
+   pasos:['Pon el limón y la hierbabuena en el vaso.','Aplasta fuerte con un mortero o el mango de una cuchara para soltar el aroma.','Llena con hielo picado.','Completa con agua con gas y mezcla de abajo hacia arriba.'],
+   tip:'Perfecto para reuniones: se ve como trago y nadie te pregunta por qué no tomas.'},
+  {id:'soda-jamaica', cat:'gas', e:'🌺', n:'Soda de jamaica', t:'3 min', rinde:'1 vaso grande', tag:'libre',
+   ing:['100 ml de agua de jamaica concentrada y fría (ver receta "Agua de jamaica")','200 ml de agua con gas','Hielo','Rodaja de limón'],
+   pasos:['Llena el vaso con hielo.','Vierte el concentrado de jamaica.','Completa con agua con gas y decora con limón.'],
+   tip:'Color rojo intenso, sabor frutal y burbujas: la que más se parece a una gaseosa roja.'},
+  {id:'soda-pina', cat:'gas', e:'🍍', n:'Soda de piña y menta', t:'3 min', rinde:'1 vaso grande', tag:'libre',
+   ing:['150 ml de agua de piña fría (de la receta "Agua de piña con canela")','150 ml de agua con gas','Hojas de menta','Hielo'],
+   pasos:['Pon hielo y menta en el vaso.','Agrega el agua de piña.','Completa con agua con gas.'],
+   tip:'Aprovecha el agua de piña que tienes en la refri y dale burbujas.'},
+  {id:'soda-toronja', cat:'gas', e:'🍊', n:'Soda de toronja y romero', t:'3 min', rinde:'1 vaso grande', tag:'libre',
+   ing:['2 rodajas de toronja','1 ramita de romero','300 ml de agua con gas','Hielo'],
+   pasos:['Aplasta suave las rodajas de toronja con el romero en el vaso.','Agrega hielo.','Completa con agua con gas.'],
+   tip:'Sabor amargo y elegante, tipo "tónica" pero sin azúcar.'},
+  {id:'limonada-pepino', cat:'limon', e:'🥒', n:'Limonada de pepino', t:'5 min', rinde:'1 litro', tag:'libre',
+   ing:['1 pepino pequeño con cáscara','Jugo de 3 limones','1 litro de agua fría','Hielo','Stevia al gusto'],
+   pasos:['Licúa el pepino con 2 vasos de agua.','Cuela bien.','Agrega el resto del agua, el limón y la stevia.','Sirve con mucho hielo.'],
+   tip:'El pepino es verdura, no fruta: casi no tiene azúcar y refresca muchísimo.'},
+  {id:'limonada-albahaca', cat:'limon', e:'🌱', n:'Limonada de albahaca', t:'5 min', rinde:'1 litro', tag:'libre',
+   ing:['1 puñado de hojas de albahaca','Jugo de 3 limones','1 litro de agua fría','Hielo','Stevia al gusto'],
+   pasos:['Licúa la albahaca con 1 vaso de agua 10 segundos.','Cuela y mezcla con el resto del agua y el limón.','Endulza poco y sirve con hielo.'],
+   tip:'Queda verde brillante y muy aromática.'},
+  {id:'limonada-rosada', cat:'limon', e:'🍓', n:'Limonada rosada de fresa', t:'5 min', rinde:'1 litro', tag:'libre',
+   ing:['5 fresas','Jugo de 3 limones','1 litro de agua fría','Hielo','Stevia al gusto'],
+   pasos:['Machaca las fresas en la jarra.','Agrega limón, agua y stevia.','Mezcla, cuela si quieres y sirve con hielo.'],
+   tip:'Con 5 fresas para un litro, cada vaso tiene menos de 2 g de azúcar.'},
+  {id:'agua-mandarina', cat:'fruta', e:'🍊', n:'Agua de mandarina y canela', t:'5 min + 30 min de reposo', rinde:'1 litro', tag:'libre',
+   ing:['1 litro de agua fría','2 mandarinas en gajos (con algo de cáscara)','1 rama de canela','Hielo'],
+   pasos:['Aplasta un poco los gajos en la jarra.','Agrega canela y agua.','Refrigera 30 minutos y sirve con hielo.'],
+   tip:'La cáscara de mandarina da mucho aroma: déjala un rato en el agua.'},
+  {id:'agua-kiwi', cat:'fruta', e:'🥝', n:'Agua de kiwi y limón', t:'5 min + 20 min de reposo', rinde:'1 litro', tag:'libre',
+   ing:['1 kiwi en rodajas','½ limón en rodajas','1 litro de agua fría','Hojas de menta','Hielo'],
+   pasos:['Pon kiwi, limón y menta en la jarra.','Agrega el agua y refrigera 20 minutos.','Sirve con hielo.'],
+   tip:'Se ve espectacular en jarra de vidrio. Cómete el kiwi al final.'},
+  {id:'agua-durazno', cat:'fruta', e:'🍑', n:'Agua de durazno y tomillo', t:'5 min + 1 h de reposo', rinde:'1 litro', tag:'libre',
+   ing:['1 durazno en gajos','2 ramitas de tomillo o hierba luisa','1 litro de agua fría','Hielo'],
+   pasos:['Pon el durazno y el tomillo en la jarra.','Agrega el agua y refrigera 1 hora.','Sirve con hielo.'],
+   tip:'Sabor suave, ideal para quienes recién dejan lo dulce.'},
+  {id:'cebada', cat:'te', e:'🌾', n:'Agua de cebada tostada', t:'25 min', rinde:'2 litros', tag:'libre',
+   ing:['3 cdas de cebada tostada','2 litros de agua','1 rama de canela','Limón al servir'],
+   pasos:['Hierve la cebada con la canela 20 minutos.','Cuela y deja enfriar.','Sirve fría con limón o tibia.'],
+   tip:'Sabor tostado tipo "malta" sin azúcar. Muy buena para el antojo de algo con cuerpo.'},
+  {id:'muna-helada', cat:'te', e:'🍃', n:'Muña helada con limón', t:'10 min + enfriado', rinde:'1 litro', tag:'libre',
+   ing:['1 manojo de muña (o 3 bolsitas)','1 litro de agua','Jugo de 1 limón','Hielo'],
+   pasos:['Hierve el agua, apaga y agrega la muña. Tapa 8 minutos.','Cuela y enfría.','Agrega el limón y sirve con hielo.'],
+   tip:'Refresca como la menta y ayuda a la digestión después de almorzar.'},
+  {id:'te-canela', cat:'te', e:'🟤', n:'Té helado de canela y clavo', t:'15 min + enfriado', rinde:'1 litro', tag:'libre',
+   ing:['2 ramas de canela','4 clavos de olor','1 litro de agua','Rodajas de naranja','Hielo'],
+   pasos:['Hierve el agua con canela y clavo 10 minutos.','Enfría y cuela.','Sirve con hielo y rodajas de naranja.'],
+   tip:'Huele a postre y no tiene nada de azúcar: engaña al antojo de dulce.'},
+  {id:'batido-fresa', cat:'cremosa', e:'🥤', n:'Batido de yogur, fresas y chía', t:'3 min', rinde:'1 vaso', tag:'medida',
+   ing:['150 ml de yogur descremado sin azúcar','60 g de fresas o arándanos','1 cda de chía','3 cubos de hielo','Canela'],
+   pasos:['Licúa el yogur, las fresas y el hielo 20 segundos.','Sirve y agrega la chía encima.','Espolvorea canela.'],
+   tip:'Es exactamente tu media tarde del plan, pero en batido. No lo sumes además de tu media tarde.'},
+  {id:'golden', cat:'cremosa', e:'✨', n:'Leche dorada de cúrcuma', t:'5 min', rinde:'1 taza', tag:'medida',
+   ing:['1 taza de leche descremada (o bebida de almendra sin azúcar)','½ cdta de cúrcuma','Pizca de pimienta negra','Pizca de canela y kion','Stevia al gusto'],
+   pasos:['Calienta la leche sin que hierva.','Agrega cúrcuma, pimienta, canela y kion, y bate.','Endulza con poca stevia. Puedes tomarla fría con hielo.'],
+   tip:'Cuenta como tu lácteo del día. Ideal en la noche en lugar de algo dulce.'},
+  {id:'cafe-latte', cat:'cremosa', e:'🧋', n:'Café helado latte', t:'5 min', rinde:'1 vaso', tag:'medida',
+   ing:['1 taza de café pasado frío','100 ml de leche descremada','Hielo','Canela o cacao en polvo sin azúcar'],
+   pasos:['Llena un vaso con hielo.','Agrega la leche y luego el café despacio para que se vea en capas.','Espolvorea canela o cacao.'],
+   tip:'Se ve como el de cafetería sin el azúcar. Cuenta como tu café del día.'},
+  {id:'te-kion', cat:'caliente', e:'🫚', n:'Té de kion con limón', t:'10 min', rinde:'2 tazas', tag:'libre',
+   ing:['1 trozo de kion de 4 cm en rodajas','2 tazas de agua','Jugo de ½ limón','Canela (opcional)'],
+   pasos:['Hierve el kion en el agua 8 minutos.','Apaga y agrega el limón.','Sírvelo caliente, sin azúcar ni miel.'],
+   tip:'Calienta, desinflama y calma el antojo de dulce en la noche.'},
+  {id:'anis', cat:'caliente', e:'⭐', n:'Infusión de anís y canela', t:'7 min', rinde:'1 taza', tag:'libre',
+   ing:['1 cdta de anís estrella o anís en grano','1 rama de canela','1 taza de agua caliente'],
+   pasos:['Echa el agua caliente sobre el anís y la canela.','Tapa 5 minutos.','Cuela y toma sin azúcar.'],
+   tip:'Tiene un dulzor natural: muchos ya no necesitan endulzar.'}
 ];
+/* kcal y azúcar aproximados por vaso (250 ml) */
+const BNUT = {'soda-limon':[4,.5],'soda-maracuya':[15,2],'soda-fresa':[12,1.5],'soda-pepino':[6,.6],'agua-limon':[4,.4],'limonada':[8,1],'limonada-frozen':[8,1],'limonada-kion':[8,1],'agua-fresa':[8,1],'agua-maracuya':[15,2],'agua-pepino':[5,.5],'agua-pina':[20,3],'agua-manzana':[15,2.5],'agua-sandia':[10,2],'agua-naranja':[10,2],'agua-chia':[30,.5],'te-verde':[3,0],'jamaica':[5,.5],'chicha':[35,6],'hierbaluisa':[2,0],'emoliente':[30,1],'infusiones':[2,0],'cafe-frio':[15,1.5],'mojito':[6,.6],'soda-jamaica':[4,.3],'soda-pina':[10,1.5],'soda-toronja':[8,1.5],'limonada-pepino':[10,1],'limonada-albahaca':[8,1],'limonada-rosada':[10,1.5],'agua-mandarina':[10,2],'agua-kiwi':[8,1.5],'agua-durazno':[8,1.5],'cebada':[25,0],'muna-helada':[3,0],'te-canela':[4,0],'batido-fresa':[135,11],'golden':[95,12],'cafe-latte':[40,5],'te-kion':[4,.3],'anis':[3,0]};
+const bnut = id => BNUT[id] || [10,1];
 
 /* ============================================================
    UTILIDADES
@@ -497,7 +640,7 @@ function saveFile(name, content, type){
 function confetti(){
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const c = $('#fx'), x = c.getContext('2d'); c.hidden = false; c.width = innerWidth; c.height = innerHeight;
-  const cols = ['#0E7C78','#C98512','#3E95CF','#BF3F28','#8DC77B'];
+  const cols = ['#22D3C5','#3BA8FF','#FFB454','#A497FF','#3DDC97','#FF7A6B'];
   const ps = Array.from({length:110},()=>({x:innerWidth/2, y:innerHeight/2.6, vx:(Math.random()-.5)*12, vy:Math.random()*-12-3, s:Math.random()*6+4, c:cols[Math.random()*cols.length|0], r:Math.random()*6}));
   let f = 0; (function tick(){ x.clearRect(0,0,c.width,c.height); ps.forEach(p=>{ p.vy+=.35; p.x+=p.vx; p.y+=p.vy; p.r+=.1; x.save(); x.translate(p.x,p.y); x.rotate(p.r); x.fillStyle=p.c; x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6); x.restore(); }); if (++f<90) requestAnimationFrame(tick); else c.hidden = true; })();
 }
@@ -597,10 +740,36 @@ function dayScore(d){
   MEALS.forEach(m => { const s=(c[m.k]||{}).estado; pts += s==='si'?1 : (s==='parcial'||s==='cambio')?0.5 : 0; });
   return { comidas: pts, pct: Math.round((pts/5)*70 + Math.min(d.agua||0,8)/8*15 + Math.min(d.actividad||0,30)/30*15) };
 }
-function ringSVG(pct){
-  const r=40, c=2*Math.PI*r, off=c*(1-pct/100);
-  return `<svg class="ring" viewBox="0 0 96 96" aria-label="Cumplimiento ${pct}%"><circle cx="48" cy="48" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="10"/><circle class="arc" cx="48" cy="48" r="${r}" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 48 48)"/><text x="48" y="46" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="22" fill="var(--ink)">${pct}%</text><text x="48" y="64" text-anchor="middle" font-size="9" fill="var(--muted)">del día</text></svg>`;
+/* Anillos concéntricos: comidas, agua, movimiento */
+function ringsSVG(vals, center, sub){
+  const R=[62,48,34], cols=[['#22D3C5','#3BA8FF'],['#4CC9FF','#7BE0FF'],['#FFB454','#FF6F7D']];
+  let s = `<svg class="rings" viewBox="0 0 150 150" aria-label="${esc(center)} ${esc(sub)}"><defs>${cols.map((c,i)=>`<linearGradient id="rg${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient>`).join('')}</defs>`;
+  vals.forEach((v,i) => { const r=R[i], c=2*Math.PI*r, off=c*(1-Math.max(0,Math.min(1,v)));
+    s += `<circle cx="75" cy="75" r="${r}" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="11"/><circle class="arc" cx="75" cy="75" r="${r}" fill="none" stroke="url(#rg${i})" stroke-width="11" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 75 75)" style="filter:drop-shadow(0 0 4px ${cols[i][0]}88)"/>`; });
+  return s + `<text x="75" y="76" text-anchor="middle" font-family="Sora, sans-serif" font-weight="800" font-size="20" fill="#E9F7F6">${esc(center)}</text><text x="75" y="92" text-anchor="middle" font-size="8.5" font-weight="700" fill="#8DB0B4">${esc(sub)}</text></svg>`;
 }
+/* Puntos (XP), niveles y logros */
+function dayXP(d){
+  let x = 0; const c = d.comidas||{};
+  MEALS.forEach(m => { const s=(c[m.k]||{}).estado; x += s==='si'?10 : (s==='parcial'||s==='cambio')?5 : 0; });
+  if ((d.agua||0)>=6) x += 10; if ((d.actividad||0)>=30) x += 15; else if ((d.actividad||0)>=15) x += 5;
+  if (d.sinGaseosa) x += 10; x += Math.min(d.frutas||0,3)*3; if (d.mast==='si') x += 5; if (d.peso) x += 5;
+  return x;
+}
+const LEVELS = [['🌱','Semilla',0],['🌿','Brote',150],['🍃','Hoja',400],['🪴','Planta',800],['🌳','Árbol',1400],['🌲','Bosque',2200],['🦾','Imparable',3200],['🏆','Leyenda',4500]];
+function xpInfo(){
+  const xp = Object.values(S.dias).reduce((a,d)=>a+dayXP(d),0) + Math.min(S.fotos.length*5, 99999);
+  let i = 0; while (i < LEVELS.length-1 && xp >= LEVELS[i+1][2]) i++;
+  const cur = LEVELS[i], nxt = LEVELS[i+1];
+  return {xp, n:i+1, e:cur[0], name:cur[1], next:nxt, pct: nxt ? (xp-cur[2])/(nxt[2]-cur[2]) : 1, falta: nxt ? nxt[2]-xp : 0};
+}
+const MEAL_HOUR = {desayuno:7, mm:10, almuerzo:13, tarde:16, cena:19};
+function nextMeal(d){
+  const now = new Date(), h = now.getHours()+now.getMinutes()/60, c = d.comidas||{};
+  for (const m of MEALS){ if ((c[m.k]||{}).estado) continue; const t = MEAL_HOUR[m.k]; if (t+1.5 > h) { const mins = Math.max(0, Math.round((t-h)*60)); return {m, mins}; } }
+  return null;
+}
+const fmtMins = n => n<=0 ? 'ahora' : n<60 ? `en ${n} min` : `en ${Math.floor(n/60)} h ${n%60? (n%60)+' min':''}`.trim();
 const fotosDe = date => S.fotos.filter(f=>f.fecha===date);
 function bebidaDelDia(date){ const n = parseIso(date).getTime()/864e5|0; return BEB[n % BEB.length]; }
 function renderHoy(){
@@ -612,34 +781,47 @@ function renderHoy(){
   if (!S.perfil.visto){
     h += `<div class="card welcome stack"><h2>¡Hola${nombre?' '+esc(nombre):''}! Bienvenido a Anto Nutrición</h2><p>Aquí tienes tu plan de comidas de lunes a domingo, bebidas para dejar la gaseosa y un control diario que se guarda en tu teléfono. Completa tu perfil para ver tu progreso.</p><div class="row"><button class="btn" data-act="perfil">Completar mi perfil</button><button class="btn" data-act="cerrar-bienvenida" style="background:transparent;color:var(--accent-ink);border:1px solid var(--accent-ink)">Ahora no</button></div></div>`;
   }
+  const lv = xpInfo(), nx = isToday ? nextMeal(d) : null, rach = racha();
   h += `
-  <div class="card stack" id="hoy-top">
+  <div class="hero" id="hoy-top">
     <div class="daybar">
       <button class="iconbtn" data-act="prev" aria-label="Día anterior">‹</button>
       <div class="mid"><div class="eyebrow">${isToday?'Hoy':'Registro del día'} · ${esc(plan.n)}</div><h1>${esc(fmtLong(date))}</h1></div>
       <button class="iconbtn" data-act="next" aria-label="Día siguiente">›</button>
     </div>
-    ${!isToday?`<div style="text-align:center"><button class="btn sm" data-act="today">Volver a hoy</button></div>`:''}
-    <div class="summary">
-      ${ringSVG(sc.pct)}
-      <div class="stats">
-        <div><span class="small muted">Comidas</span><b class="num">${sc.comidas}/5</b></div>
-        <div><span class="small muted">Agua</span><b class="num">${d.agua||0}/8 vasos</b></div>
-        <div><span class="small muted">Actividad</span><b class="num">${d.actividad||0} min</b></div>
-        <div><span class="small muted">Sin gaseosa</span><b>${d.sinGaseosa?'✓ Sí':'—'}</b></div>
+    ${!isToday?`<div style="text-align:center;margin-top:8px"><button class="btn sm" data-act="today">Volver a hoy</button></div>`:''}
+    <div class="rings-row">
+      ${ringsSVG([sc.comidas/5, Math.min(d.agua||0,8)/8, Math.min(d.actividad||0,30)/30], sc.pct+'%', 'DEL DÍA')}
+      <div class="legend3 num">
+        <div><i style="background:var(--grad)"></i><span class="small muted">Comidas</span><b>${sc.comidas}/5</b></div>
+        <div><i style="background:var(--water)"></i><span class="small muted">Agua</span><b>${d.agua||0}/8</b></div>
+        <div><i style="background:var(--grad-warm)"></i><span class="small muted">Movimiento</span><b>${d.actividad||0}′</b></div>
+        <div><i style="background:var(--violet)"></i><span class="small muted">Puntos hoy</span><b>+${dayXP(d)}</b></div>
       </div>
     </div>
-    <button class="switch" data-act="dep" aria-pressed="${dep}"><span><b>Día depurativo</b><br><span class="small muted">Solo 1 día, no laborable</span></span><span class="k"></span></button>
+    <div class="xpbar">
+      <div class="meal-head"><b>${lv.e} Nivel ${lv.n} · ${esc(lv.name)}</b><span class="small muted num">${lv.xp} XP</span></div>
+      <div class="track"><i style="width:${(lv.pct*100).toFixed(0)}%"></i></div>
+      <span class="small muted">${lv.next?`Te faltan ${lv.falta} XP para ${lv.next[0]} ${esc(lv.next[1])}`:'¡Nivel máximo alcanzado!'}</span>
+    </div>
+    <div class="chipline">
+      <span class="pill water">🔥 ${rach} ${rach===1?'día':'días'} sin gaseosa</span>
+      ${fot.length?`<span class="pill violet">📷 ${fot.length} foto${fot.length>1?'s':''}${kc?' · '+r0(kc)+' kcal':''}</span>`:''}
+      ${d.sinGaseosa?'<span class="pill ok">✓ Hoy sin gaseosa</span>':''}
+    </div>
   </div>
-  <button class="card row" data-act="ir-bebida" style="text-align:left;border-color:var(--water);background:var(--water-soft);width:100%">
-    <span style="font-size:2rem">${bd.e}</span><span style="flex:1;min-width:0"><span class="eyebrow" style="color:var(--water)">Bebida sugerida de hoy</span><br><b>${esc(bd.n)}</b></span><span>›</span>
-  </button>`;
+  ${nx?`<div class="nextmeal"><span class="big">⏰</span><span style="flex:1;min-width:0"><span class="eyebrow" style="color:var(--sun)">Próxima comida ${fmtMins(nx.mins)}</span><br><b>${nx.m.n}</b> <span class="small muted">· ${nx.m.h}</span></span></div>`:''}
+  <button class="tipcard" data-act="ir-bebida">
+    <span style="font-size:2.2rem">${bd.e}</span><span style="flex:1;min-width:0"><span class="eyebrow" style="color:var(--water)">Bebida sugerida de hoy</span><br><b>${esc(bd.n)}</b></span><span>›</span>
+  </button>
+  <button class="switch" data-act="dep" aria-pressed="${dep}"><span><b>Día depurativo</b><br><span class="small muted">Solo 1 día, no laborable</span></span><span class="k"></span></button>
+  <div class="timeline">`;
   MEALS.forEach(m => {
     const meal = mealFor(plan, m.k, di, d.opc), st = (d.comidas||{})[m.k]||{};
     const mf = fot.filter(f=>f.tiempo===m.k);
     const optsList = (!dep && (m.k==='mm'||m.k==='tarde')) ? (m.k==='mm'?MM_OPTS:T_OPTS) : null;
     const cur = (d.opc && d.opc[m.k]!=null) ? d.opc[m.k] : di%3;
-    h += `<div class="card meal">
+    h += `<div class="card meal${nx&&nx.m.k===m.k?' next':''}" data-st="${st.estado||''}">
       <div class="meal-head"><h3>${m.n}</h3><span class="time">${m.h}</span></div>
       ${optsList?`<div class="chips">${optsList.map((o,i)=>`<button class="chip" data-opt="${m.k}" data-i="${i}" aria-pressed="${i===cur}">Opción ${i+1}</button>`).join('')}</div>`:''}
       <p>${esc(mealText(meal))}</p>
@@ -649,8 +831,8 @@ function renderHoy(){
     </div>`;
   });
   const glasses = Array.from({length:8},(_,i)=>`<button class="glass" data-agua="${i+1}" aria-pressed="${i<(d.agua||0)}" aria-label="${i+1} vasos"><svg viewBox="0 0 36 44"><path class="w" d="M6 6 L30 6 L27 40 L9 40 Z"/><path class="o" d="M5 4 L31 4 L28 41 L8 41 Z"/></svg></button>`).join('');
-  h += `<div class="card stack">
-    <div class="meal-head"><h3>Agua pura</h3><span class="small muted">meta 6 a 8 vasos</span></div>
+  h += `</div><div class="card stack">
+    <div class="meal-head"><h3>💧 Agua pura</h3><span class="small muted">meta 6 a 8 vasos</span></div>
     <div class="glasses">${glasses}</div>
     <button class="switch" data-act="gaseosa" aria-pressed="${!!d.sinGaseosa}"><span><b>Hoy no tomé gaseosa</b><br><span class="small muted">Suma a tu racha en Bebidas</span></span><span class="k"></span></button>
     <div class="meal-head"><h3>Frutas del día</h3><span class="small muted">meta 3 porciones de 200 g</span></div>
@@ -677,7 +859,9 @@ function renderHoy(){
   </div>
   <p class="swipehint">Desliza a los lados para cambiar de día</p>`;
   $('#v-hoy').innerHTML = h;
+  updateHeader();
 }
+function updateHeader(){ const lv = xpInfo(); $('#hdr-lvl').textContent = `${lv.e} Nivel ${lv.n} · ${lv.xp} XP`; }
 $('#v-hoy').addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   const date = S.date; buzz();
@@ -779,7 +963,7 @@ function renderBebidas(){
   const list = BEB.filter(b => S.bcat==='todas' ? true : S.bcat==='favs' ? S.favs.includes(b.id) : b.cat===S.bcat);
   $('#v-bebidas').innerHTML = `
   <div class="hero-beb">
-    <div><div class="eyebrow" style="color:var(--water)">Bebidas</div><h1>Adiós gaseosa, hola sabor</h1><p class="muted" style="margin-top:6px">${BEB.length} bebidas sin azúcar, frías, con burbujas y fáciles de preparar.</p></div>
+    <div><div class="eyebrow" style="color:var(--water)">Bebidas</div><h1>Adiós gaseosa, <span class="grad-text">hola sabor</span></h1><p class="muted" style="margin-top:6px"><b style="color:var(--ink)">${BEB.length} recetas</b> sin azúcar, con ingredientes y preparación paso a paso: con burbujas, limonadas, aguas de fruta, tés, cremosas y calientes.</p></div>
     <div class="streak num">
       <div><b>${rach}</b><span class="small muted">días seguidos</span></div>
       <div><b>${total}</b><span class="small muted">días sin gaseosa</span></div>
@@ -814,9 +998,9 @@ function renderBebidas(){
   </div>
   <div class="bgrid">
     ${list.length? list.map(b=>`<article class="bcard">
-      <div class="art cat-${b.cat}">${b.e}${b.cat==='gas'?'<i class="bub" style="left:30%"></i><i class="bub" style="left:55%;animation-delay:.8s"></i><i class="bub" style="left:72%;animation-delay:1.6s"></i>':''}</div>
+      <div class="art cat-${b.cat}"><span>${b.e}</span>${b.cat==='gas'?'<i class="bub" style="left:30%"></i><i class="bub" style="left:55%;animation-delay:.8s"></i><i class="bub" style="left:72%;animation-delay:1.6s"></i>':''}</div>
       <div class="body">
-        <div class="meta"><span class="pill ${b.tag==='libre'?'ok':'warn'}">${b.tag==='libre'?'Libre':'1 al día'}</span><span class="pill">⏱ ${esc(b.t)}</span></div>
+        <div class="meta"><span class="pill ${b.tag==='libre'?'ok':'warn'}">${b.tag==='libre'?'Libre':'1 al día'}</span><span class="pill">⏱ ${esc(b.t)}</span><span class="pill water num">${bnut(b.id)[0]} kcal · ${bnut(b.id)[1]} g azúcar</span></div>
         <h3>${esc(b.n)}</h3>
         <p class="small muted">${esc(b.ing.slice(0,3).join(' · '))}</p>
         <div class="acts"><button class="btn sm primary" data-receta="${b.id}">Cómo prepararla</button><button class="fav" data-fav="${b.id}" aria-pressed="${S.favs.includes(b.id)}" aria-label="Favorita">${S.favs.includes(b.id)?'★':'☆'}</button></div>
@@ -837,9 +1021,10 @@ function openBebida(id){
   const b = BEB.find(x=>x.id===id); if (!b) return;
   openSheet(`<div class="sheet-head"><span class="pill ${b.tag==='libre'?'ok':'warn'}">${b.tag==='libre'?'Libre':'1 al día'} · ${esc(BCATS[b.cat])}</span><button class="iconbtn" data-close aria-label="Cerrar">✕</button></div>
     <div class="recipe-sheet stack">
-      <div class="row" style="flex-wrap:nowrap"><span style="font-size:3rem">${b.e}</span><div><h2>${esc(b.n)}</h2><span class="small muted">⏱ ${esc(b.t)} · rinde ${esc(b.rinde)}</span></div></div>
+      <div class="row" style="flex-wrap:nowrap"><span style="font-size:3.2rem;filter:drop-shadow(0 0 14px rgba(76,201,255,.5))">${b.e}</span><div><h2>${esc(b.n)}</h2><span class="small muted">⏱ ${esc(b.t)} · rinde ${esc(b.rinde)}</span></div></div>
+      <div class="row"><span class="pill water num">≈ ${bnut(b.id)[0]} kcal por vaso</span><span class="pill ok num">${bnut(b.id)[1]} g de azúcar</span><span class="pill bad num">gaseosa: 105 kcal · 26 g</span></div>
       <div><h3>Ingredientes</h3><ul>${b.ing.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>
-      <div><h3>Preparación</h3><ol>${b.pasos.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>
+      <div class="stack" style="gap:8px"><div class="meal-head"><h3>Preparación paso a paso</h3><span class="small muted">toca cada paso al terminarlo</span></div><ol class="steps">${b.pasos.map((x,i)=>`<li><button data-step="${i}" aria-pressed="false"><span class="n">${i+1}</span><span class="t">${esc(x)}</span></button></li>`).join('')}</ol></div>
       <div class="note"><b>Tip:</b> ${esc(b.tip)}</div>
       <div class="row"><button class="btn primary" data-share-beb="${b.id}">Compartir receta</button><button class="btn" data-fav="${b.id}">${S.favs.includes(b.id)?'★ En favoritas':'☆ Guardar en favoritas'}</button></div>
     </div>`);
@@ -868,6 +1053,12 @@ $('#sheet').addEventListener('click', async e => {
   if (e.target === $('#sheet')) return $('#sheet').close();
   const b = e.target.closest('button'); if (!b) return;
   if (b.hasAttribute('data-close')) return $('#sheet').close();
+  if (b.dataset.step != null){
+    buzz(); b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true' ? 'false' : 'true');
+    const all = [...$('#sheet').querySelectorAll('[data-step]')];
+    if (all.every(x=>x.getAttribute('aria-pressed')==='true')){ toast('¡Bebida lista! Salud 🥂'); confetti(); }
+    return;
+  }
   if (b.dataset.fav) return toggleFav(b.dataset.fav);
   if (b.dataset.shareBeb){ const r = BEB.find(x=>x.id===b.dataset.shareBeb); const txt = `${r.e} ${r.n}\n\nIngredientes:\n- ${r.ing.join('\n- ')}\n\nPreparación:\n${r.pasos.map((p,i)=>(i+1)+'. '+p).join('\n')}\n\nTip: ${r.tip}\n\nDe la app Anto Nutrición: ${appUrl()}`; return shareText(r.n, txt); }
   if (b.id==='perfil-save') return guardarPerfil();
@@ -876,7 +1067,7 @@ $('#sheet').addEventListener('click', async e => {
   if (b.id==='key-test') return probarClave();
 });
 $('#sheet').addEventListener('change', e => { if (e.target.id==='restore-file' && e.target.files[0]) importBackup(e.target.files[0]); });
-const PF = [['nombre','Nombre','text','Tu nombre'],['edad','Edad','numeric','años'],['talla','Talla (cm)','decimal','ej. 167'],['pesoIni','Peso inicial (kg)','decimal','ej. 120'],['fechaIni','Fecha de inicio','date',''],['cinturaIni','Cintura inicial (cm)','decimal','opcional'],['hba1c','HbA1c (%)','decimal','opcional'],['glucosaIni','Glucosa en ayunas inicial','numeric','opcional'],['nutri','Mi nutricionista','text','opcional']];
+const PF = [['nombre','Nombre','text','Tu nombre'],['edad','Edad','numeric','años'],['talla','Talla (cm)','decimal','ej. 167'],['pesoIni','Peso inicial (kg)','decimal','ej. 120'],['pesoMeta','Meta de peso (kg)','decimal','ej. 95'],['fechaIni','Fecha de inicio','date',''],['cinturaIni','Cintura inicial (cm)','decimal','opcional'],['hba1c','HbA1c (%)','decimal','opcional'],['glucosaIni','Glucosa en ayunas inicial','numeric','opcional'],['nutri','Mi nutricionista','text','opcional']];
 function openPerfil(){
   const p = S.perfil;
   openSheet(`<div class="sheet-head"><h2>Mi perfil</h2><button class="iconbtn" data-close aria-label="Cerrar">✕</button></div>
@@ -1190,12 +1381,36 @@ function weightChart(){
   const area=line+` L${x(pts[pts.length-1].f).toFixed(1)} ${H-B} L${x(pts[0].f).toFixed(1)} ${H-B} Z`;
   const last=pts[pts.length-1];
   return `<div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolución del peso">
+    <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#22D3C5"/><stop offset="1" stop-color="#3BA8FF"/></linearGradient><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22D3C5" stop-opacity=".35"/><stop offset="1" stop-color="#22D3C5" stop-opacity="0"/></linearGradient></defs>
     ${ticks.map(v=>`<line class="ax" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`).join('')}
-    <path class="ar" d="${area}"/><path class="ln" d="${line}"/>
+    <path d="${area}" fill="url(#ag)"/><path class="ln" d="${line}"/>
     ${pts.map(q=>`<circle class="pt" cx="${x(q.f)}" cy="${y(q.w)}" r="${q===last?5:3}"/>`).join('')}
     <text x="${L}" y="${H-8}">${esc(fmtShort(pts[0].f))}</text><text x="${W-R}" y="${H-8}" text-anchor="end">${esc(fmtShort(last.f))}</text>
-    <text x="${W-R}" y="${y(last.w)-10}" text-anchor="end" style="font-weight:700;fill:var(--ink)">${last.w} kg</text>
+    <text x="${W-R}" y="${y(last.w)-10}" text-anchor="end" style="font-weight:800;fill:#E9F7F6">${last.w} kg</text>
   </svg></div>`;
+}
+function badges(){
+  const ds = diasOrdenados().map(k=>S.dias[k]);
+  const bestRun = pred => { let best=0, run=0, prev=null; diasOrdenados().forEach(k => { if (pred(S.dias[k])) { run = (prev && addDays(prev,1)===k) ? run+1 : 1; prev = k; } else { run = 0; prev = null; } best = Math.max(best, run); }); return best; };
+  const best = bestRun(d => dayScore(d).pct>=80), bestGas = bestRun(d => !!d.sinGaseosa);
+  const ini = +S.perfil.pesoIni || null, pesos = ds.filter(d=>d.peso).map(d=>+d.peso), minP = pesos.length ? Math.min(...pesos) : null, baj = ini && minP ? ini - minP : 0;
+  const hid = ds.filter(d=>(d.agua||0)>=8).length, actv = ds.filter(d=>(d.actividad||0)>=30).length;
+  return [
+    {e:'🚀', n:'Primer paso', d:'Registra tu primer día', on: ds.length>=1},
+    {e:'🔥', n:'Racha de 3', d:'3 días seguidos al 80%', on: best>=3},
+    {e:'⭐', n:'Semana perfecta', d:'7 días seguidos al 80%', on: best>=7},
+    {e:'🥤', n:'Adiós gaseosa', d:'7 días seguidos sin gaseosa', on: bestGas>=7},
+    {e:'🧊', n:'Libre de azúcar', d:'30 días seguidos sin gaseosa', on: bestGas>=30},
+    {e:'💧', n:'Hidratado', d:'8 vasos de agua en 5 días', on: hid>=5},
+    {e:'🏃', n:'En movimiento', d:'10 días con 30+ min', on: actv>=10},
+    {e:'📷', n:'Ojo de chef', d:'Analiza 10 fotos', on: S.fotos.length>=10},
+    {e:'🍍', n:'Depurado', d:'Completa el día depurativo', on: ds.some(d=>d.depurativo && dayScore(d).comidas>=4)},
+    {e:'⚖️', n:'Primer kilo', d:'Baja 1 kg', on: baj>=1},
+    {e:'🏅', n:'Cinco menos', d:'Baja 5 kg', on: baj>=5},
+    {e:'🏆', n:'Diez menos', d:'Baja 10 kg', on: baj>=10},
+    {e:'🍹', n:'Bartender sano', d:'Guarda 5 bebidas favoritas', on: S.favs.length>=5},
+    {e:'📅', n:'Un mes', d:'30 días registrados', on: ds.length>=30}
+  ];
 }
 function renderAvance(){
   const ks = diasOrdenados(), last14 = Array.from({length:14},(_,i)=>addDays(iso(new Date()),-13+i));
@@ -1205,15 +1420,46 @@ function renderAvance(){
   const adh = sem.length ? Math.round(sem.reduce((a,d)=>a+dayScore(d).comidas,0)/(sem.length*5)*100) : 0;
   const agua = sem.length ? (sem.reduce((a,d)=>a+(d.agua||0),0)/sem.length).toFixed(1) : '0';
   const act = sem.reduce((a,d)=>a+((d.actividad||0)>=30?1:0),0);
-  $('#v-avance').innerHTML = `<div><div class="eyebrow">Avance</div><h1>Mi progreso</h1><p class="muted" style="margin-top:6px">Todo lo que marcas en <b>Hoy</b> y tus fotos se juntan aquí. Descarga el reporte para tu control.</p></div>
-  <div class="kpis num">
-    <div><span class="small muted">Peso actual</span><b>${ult??ini??'—'} ${ult||ini?'kg':''}</b><span class="small muted">${ult&&ini?((ult-ini)<=0?'':'+')+(ult-ini).toFixed(1)+' kg desde el inicio':'registra tu peso en Hoy'}</span></div>
-    <div><span class="small muted">Cumplimiento 7 días</span><b>${adh}%</b><span class="small muted">de comidas</span></div>
-    <div><span class="small muted">Agua promedio</span><b>${agua}</b><span class="small muted">vasos al día</span></div>
-    <div><span class="small muted">Días con 30+ min</span><b>${act}/7</b><span class="small muted">actividad física</span></div>
-    <div><span class="small muted">Racha sin gaseosa</span><b>${racha()}</b><span class="small muted">días seguidos</span></div>
+  const lv = xpInfo(), meta = +S.perfil.pesoMeta || null, actual = ult ?? ini;
+  const goalPct = (ini && meta && actual && ini>meta) ? Math.max(0, Math.min(1, (ini-actual)/(ini-meta))) : null;
+  const today = iso(new Date());
+  // mapa de calor: 5 semanas, de lunes a domingo
+  const start = addDays(today, -(dayIdx(today)) - 28);
+  const heat = Array.from({length:35},(_,i)=>{ const k=addDays(start,i), d=S.dias[k]; const p = d? dayScore(d).pct/100 : 0; const fut = k>today;
+    return `<div class="h${k===today?' today':''}" title="${esc(fmtShort(k))}: ${Math.round(p*100)}%" style="${fut?'opacity:.25;':''}${p?`background:rgba(34,211,197,${(.18+p*.82).toFixed(2)});box-shadow:0 0 ${Math.round(p*10)}px rgba(34,211,197,${(p*.5).toFixed(2)})`:''}"></div>`; }).join('');
+  const last7 = Array.from({length:7},(_,i)=>addDays(today,-6+i));
+  const wb = last7.map(k=>{ const d=S.dias[k], p=d?dayScore(d).pct:0; return `<div><span class="num" style="color:var(--ink);font-weight:800">${p?p+'%':''}</span><i style="height:${Math.max(3,p)}%"></i><span>${parseIso(k).toLocaleDateString('es-PE',{weekday:'narrow'}).toUpperCase()}</span></div>`; }).join('');
+  const B = badges();
+  $('#v-avance').innerHTML = `<div><div class="eyebrow">Avance</div><h1>Mi <span class="grad-text">progreso</span></h1><p class="muted" style="margin-top:6px">Todo lo que marcas en <b>Hoy</b> suma puntos, logros y se guarda para tu control.</p></div>
+  <div class="hero stack">
+    <div class="goal">
+      ${ringsSVG([goalPct ?? 0, lv.pct, Math.min(1, racha()/30)], goalPct!=null? Math.round(goalPct*100)+'%' : lv.e, goalPct!=null?'DE TU META':'NIVEL '+lv.n)}
+      <div class="stack" style="gap:10px;min-width:0">
+        <div><span class="eyebrow">Meta de peso</span>${meta?`<h2 class="num">${actual??'—'} → ${meta} kg</h2><span class="small muted">${ini&&actual?`Bajaste ${(ini-actual).toFixed(1)} kg · faltan ${Math.max(0,actual-meta).toFixed(1)} kg`:''}</span>`:`<p class="small muted">Pon tu peso inicial y tu meta en 👤 Mi perfil para ver tu avance.</p><button class="btn sm primary" data-act="perfil" style="align-self:flex-start;margin-top:6px">Poner mi meta</button>`}</div>
+        ${meta&&goalPct!=null?`<div class="track" style="height:14px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden"><i style="display:block;height:100%;width:${(goalPct*100).toFixed(0)}%;border-radius:99px;background:var(--grad);box-shadow:0 0 14px rgba(34,211,197,.6)"></i></div>`:''}
+        <div class="legend3 num">
+          <div><i style="background:var(--grad)"></i><span class="small muted">Meta de peso</span><b>${goalPct!=null?Math.round(goalPct*100)+'%':'—'}</b></div>
+          <div><i style="background:var(--water)"></i><span class="small muted">${lv.e} Nivel ${lv.n} · ${esc(lv.name)}</span><b>${lv.xp} XP</b></div>
+          <div><i style="background:var(--grad-warm)"></i><span class="small muted">Racha sin gaseosa (meta 30)</span><b>${racha()}</b></div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card stack"><h2>Peso</h2>${weightChart()}</div>
+  <div class="kpis num">
+    <div><span class="small muted">Peso actual</span><b>${actual??'—'} ${actual?'kg':''}</b><span class="small muted">${ult&&ini?((ult-ini)<=0?'':'+')+(ult-ini).toFixed(1)+' kg desde el inicio':'registra tu peso en Hoy'}</span></div>
+    <div><span class="small muted">Comidas 7 días</span><b>${adh}%</b><span class="small muted">cumplidas</span></div>
+    <div><span class="small muted">Agua promedio</span><b>${agua}</b><span class="small muted">vasos al día</span></div>
+    <div><span class="small muted">Días activos</span><b>${act}/7</b><span class="small muted">con 30+ min</span></div>
+  </div>
+  <div class="card stack"><div class="meal-head"><h2>Esta semana</h2><span class="small muted">% del día cumplido</span></div><div class="wbars">${wb}</div></div>
+  <div class="card stack"><div class="meal-head"><h2>Constancia</h2><span class="small muted">últimas 5 semanas</span></div>
+    <div class="heat">${['L','M','M','J','V','S','D'].map(x=>`<span class="dn">${x}</span>`).join('')}${heat}</div>
+    <span class="small muted">Más brillante = día más completo. El borde naranja es hoy.</span>
+  </div>
+  <div class="card stack"><div class="meal-head"><h2>Logros</h2><span class="pill violet">${B.filter(b=>b.on).length}/${B.length} desbloqueados</span></div>
+    <div class="badges">${B.map(b=>`<div class="badge${b.on?' on':''}"><span class="bi">${b.e}</span><b>${esc(b.n)}</b><span>${esc(b.d)}</span></div>`).join('')}</div>
+  </div>
+  <div class="card stack"><h2>Curva de peso</h2>${weightChart()}</div>
   <div class="card stack"><h2>Últimos 14 días</h2>
     <p class="small muted">✓ comí · ½ parcial · ↺ cambié · ✕ no comí · — sin registro · 🥤 sin gaseosa</p>
     <div class="tablewrap"><table class="num"><thead><tr><th>Día</th>${MEALS.map(m=>`<th>${m.n}</th>`).join('')}<th>Agua</th><th>Frutas</th><th>Activ.</th><th>Sin gas.</th><th>Peso</th><th>Glucosa</th></tr></thead><tbody>
@@ -1250,6 +1496,7 @@ function reportCSV(){
 }
 $('#v-avance').addEventListener('click', e => {
   const hoy = iso(new Date());
+  if (e.target.closest('[data-act="perfil"]')) return openPerfil();
   if (e.target.id==='dl-html'){ saveFile(`reporte-nutriplan-${hoy}.html`, reportHTML(), 'text/html'); toast('Reporte descargado'); }
   if (e.target.id==='dl-csv'){ saveFile(`registro-nutriplan-${hoy}.csv`, reportCSV(), 'text/csv'); toast('Tabla descargada'); }
 });
@@ -1281,7 +1528,8 @@ document.addEventListener('visibilitychange', () => { const t = iso(new Date());
   if (!TABS.includes(t)) t = 'hoy';
   go(t);
   await loadFotos();
-  if (S.tab==='foto' || S.tab==='hoy') RENDER[S.tab]();
+  RENDER[S.tab](); updateHeader();
+  setTimeout(() => { const sp = $('#splash'); sp.classList.add('out'); setTimeout(()=>sp.remove(), 500); }, 650);
   try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}
 })();
 </script>

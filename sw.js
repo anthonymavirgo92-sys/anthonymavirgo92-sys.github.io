@@ -1,5 +1,5 @@
 // Anto Nutrición: funciona sin internet (salvo la Foto IA)
-const CACHE = 'nutriplan-v3';
+const CACHE = 'nutriplan-v4';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
